@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -7,12 +7,14 @@ export default function Login() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(credentials);
 
     try {
-      const response = await fetch("https://gofood-nkxf.onrender.com/api/createuser", {
+      const response = await fetch("https://gofood-nkxf.onrender.com/api/loginuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,6 +29,7 @@ export default function Login() {
     }
 
     console.log("Form Submitted");
+    navigate("/");
   };
 
   const onChange = (e) => {

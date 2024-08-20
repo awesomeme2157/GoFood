@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export const Signup = () => {
   const [credentials, setCredentials] = useState({
@@ -8,6 +9,8 @@ export const Signup = () => {
     password: "",
     location: "",
   });
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +26,13 @@ export const Signup = () => {
       });
 
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
     } catch (error) {
       console.error("Error during signup:", error);
     }
 
-    console.log("Form Submitted");
+    // console.log("Form Submitted");
+    navigate("/login");
   };
 
   const onChange = (e) => {
