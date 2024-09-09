@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoDB = require("./db.js");
 
 const userRoutes = require("./Routes/User.js");
+const displayData = require("./Routes/DisplayData.js");
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 mongoDB.connectDB();
 
 app.use("/api", userRoutes);
+app.use("/asd", displayData);
 
 // Start the server
 app.listen(PORT, () => {

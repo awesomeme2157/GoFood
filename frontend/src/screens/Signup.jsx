@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 export const Signup = () => {
   const [credentials, setCredentials] = useState({
     name: "",
@@ -17,13 +16,16 @@ export const Signup = () => {
     console.log(credentials);
 
     try {
-      const response = await fetch("https://gofood-nkxf.onrender.com/api/createuser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      });
+      const response = await fetch(
+        "https://gofood-nkxf.onrender.com/api/createuser",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(credentials),
+        }
+      );
 
       const json = await response.json();
       // console.log(json);

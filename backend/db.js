@@ -11,11 +11,19 @@ const connectDB = async () => {
 
     // Access the collection after the connection is open
     const db = mongoose.connection.db;
-    const fetched_data = db.collection("food_data");
 
-    // Fetch data and handle the promise
-    const result = await fetched_data.find({}).toArray();
-    // console.log(result);
+    // Fetch data for food_data and food_categories
+    const foodData = await db.collection("food_data").find({}).toArray();
+    const foodCategories = await db
+      .collection("food_categories")
+      .find({})
+      .toArray();
+
+    // Assign data to global variables
+    global.food_data = foodData;
+    global.food_categories = foodCategories;
+
+    console.log("Data fetched and global variables set.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }
