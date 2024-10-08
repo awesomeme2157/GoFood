@@ -14,6 +14,10 @@ export default function Card(props) {
     setTotalPrice(options[size] * qty);
   };
 
+  const handleAddToCart = () => {
+    
+  };
+
   return (
     <>
       <div className="col-sm-12 col-md-6 col-lg-3 mb-4">
@@ -85,6 +89,15 @@ export default function Card(props) {
                   Total Price: ₹{totalPrice}
                 </span>
               </div>
+
+              <hr />
+
+              <button
+                className={`btn btn-success justify-center ms-2`}
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>

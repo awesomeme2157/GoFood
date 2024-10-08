@@ -13,8 +13,6 @@ export default function Login() {
     e.preventDefault();
     console.log("Submitting credentials:", credentials);
 
-    // http://localhost:5000/api/loginuser
-
     try {
       const response = await fetch("http://localhost:5000/api/loginuser", {
         method: "POST",
